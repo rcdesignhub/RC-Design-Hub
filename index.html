@@ -360,6 +360,58 @@ interior atmosphere.
 
 </div>
 </section>
+<section class="pricing" id="pricing">
+
+    <h2>Our Pricing</h2>
+    <p class="pricing-subtitle">
+        Simple & transparent pricing for your design requirements.
+    </p>
+
+    <div class="pricing-cards">
+
+        <div class="price-card">
+            <h3>2D Floor Plan</h3>
+            <div class="price">₹1.50 <span>/ sq.ft</span></div>
+        </div>
+
+        <div class="price-card">
+            <h3>3D Elevation</h3>
+            <div class="price">₹3.00 <span>/ sq.ft</span></div>
+        </div>
+
+        <div class="price-card">
+            <h3>2D + 3D Elevation</h3>
+            <div class="price">₹3.50 <span>/ sq.ft</span></div>
+        </div>
+
+    </div>
+
+    <div class="quotation-box">
+
+        <h3>Get Your Estimate</h3>
+        <p>Enter your details to calculate your estimated design cost.</p>
+
+        <label for="sqft">Built-up Area (sq.ft)</label>
+        <input type="number" id="sqft" placeholder="Enter square feet" min="1">
+
+        <label for="designType">Select Design Type</label>
+        <select id="designType">
+            <option value="">Select Design</option>
+            <option value="2d">2D Floor Plan</option>
+            <option value="3d">3D Elevation</option>
+            <option value="both">2D + 3D Elevation</option>
+        </select>
+
+        <button type="button" onclick="calculateQuote()">
+            Calculate Estimate
+        </button>
+
+        <div id="quoteResult" class="quote-result"></div>
+
+    </div>
+
+</section>
+
 <section class="contact" id="contact">
 
     <h2>Contact Us</h2>
