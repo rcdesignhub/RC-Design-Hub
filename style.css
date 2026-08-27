@@ -2676,115 +2676,1823 @@ footer{
         transform: translateY(0);
     }
 }
-/* =========================
-   🏗️ CONSTRUCTION GAME
-========================= */
+@media (max-width: 768px) {
 
-.game-section{
-    padding:90px 20px;
-    background:linear-gradient(180deg,#f5f7fa,#ffffff);
-    text-align:center;
+    .project-card a {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative;
+        z-index: 10;
+    }
+
 }
+/* =========================================
+   🔥 ARCHITECTURAL BLUEPRINT REVEAL
+========================================= */
 
-.game-section h2{
-    font-size:42px;
-    color:#0d47a1;
-    margin-bottom:12px;
-}
-
-.game-subtitle{
-    color:#666;
-    font-size:18px;
-    margin-bottom:40px;
-}
-
-.game-container{
-    max-width:900px;
-    margin:auto;
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 10px 35px rgba(0,0,0,0.12);
-}
-
-.game-house{
-    height:300px;
-    background:linear-gradient(#87ceeb 65%,#78a852 65%);
-    border-radius:15px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:120px;
-    margin-bottom:30px;
+.blueprint-hero{
+    position:relative;
     overflow:hidden;
 }
 
-.game-controls{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
+/* BLUEPRINT GRID */
+
+.blueprint-grid{
+    position:absolute;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+
+    background-size:40px 40px;
+
+    opacity:0;
+    animation:gridReveal 1.5s ease forwards;
 }
 
-.game-controls button{
-    margin-top:0;
-    padding:13px 22px;
-    border:none;
-    border-radius:25px;
-    background:#0d47a1;
-    color:white;
-    font-size:15px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s ease;
+
+/* CAD LINES */
+
+.cad-lines{
+    position:absolute;
+    inset:0;
+    z-index:2;
+    pointer-events:none;
 }
 
-.game-controls button:hover{
+.cad-line{
+    position:absolute;
     background:#d4af37;
-    color:#111;
-    transform:translateY(-4px);
+    opacity:0;
 }
 
-#gameResult{
+.line-1{
+    width:1px;
+    height:100%;
+    left:20%;
+    animation:cadVertical 1.2s ease 0.5s forwards;
+}
+
+.line-2{
+    width:1px;
+    height:100%;
+    right:20%;
+    animation:cadVertical 1.2s ease 0.7s forwards;
+}
+
+.line-3{
     width:100%;
-    margin-top:20px;
-    padding:15px;
-    background:#f5f7fa;
-    border-radius:12px;
-    color:#555;
-    font-weight:bold;
+    height:1px;
+    top:25%;
+    animation:cadHorizontal 1.2s ease 0.8s forwards;
 }
 
-/* Mobile */
+.line-4{
+    width:100%;
+    height:1px;
+    bottom:25%;
+    animation:cadHorizontal 1.2s ease 1s forwards;
+}
+
+.roof-line{
+    width:70%;
+    height:2px;
+    top:50%;
+    left:15%;
+    background:#ffffff;
+    animation:roofReveal 1.5s ease 1.2s forwards;
+}
+
+
+/* BUILDING DRAW */
+
+.building-draw{
+    position:absolute;
+    width:500px;
+    height:350px;
+
+    left:50%;
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    z-index:2;
+    opacity:0;
+
+    animation:buildingAppear 1s ease 1.5s forwards;
+}
+
+
+/* FOUNDATION */
+
+.draw-foundation{
+    position:absolute;
+    bottom:30px;
+    left:40px;
+
+    width:420px;
+    height:8px;
+
+    background:#d4af37;
+
+    transform:scaleX(0);
+    transform-origin:left;
+
+    animation:drawWidth 1s ease 1.7s forwards;
+}
+
+
+/* WALLS */
+
+.draw-wall{
+    position:absolute;
+    bottom:38px;
+
+    width:8px;
+    height:220px;
+
+    background:#ffffff;
+
+    transform:scaleY(0);
+    transform-origin:bottom;
+}
+
+.wall-left{
+    left:70px;
+    animation:drawHeight 1s ease 2s forwards;
+}
+
+.wall-right{
+    right:70px;
+    animation:drawHeight 1s ease 2.2s forwards;
+}
+
+
+/* ROOF */
+
+.draw-roof{
+    position:absolute;
+
+    top:65px;
+    left:70px;
+
+    width:360px;
+    height:8px;
+
+    background:#d4af37;
+
+    transform:scaleX(0);
+    transform-origin:center;
+
+    animation:drawWidth 1s ease 2.4s forwards;
+}
+
+
+/* WINDOWS */
+
+.draw-window{
+    position:absolute;
+
+    width:65px;
+    height:80px;
+
+    border:3px solid #ffffff;
+
+    opacity:0;
+}
+
+.window-1{
+    left:130px;
+    bottom:80px;
+
+    animation:windowReveal 0.7s ease 2.7s forwards;
+}
+
+.window-2{
+    right:130px;
+    bottom:80px;
+
+    animation:windowReveal 0.7s ease 2.9s forwards;
+}
+
+
+/* DOOR */
+
+.draw-door{
+    position:absolute;
+
+    width:65px;
+    height:110px;
+
+    left:50%;
+    bottom:38px;
+
+    transform:translateX(-50%) scaleY(0);
+    transform-origin:bottom;
+
+    border:3px solid #d4af37;
+
+    animation:doorReveal 0.8s ease 3.1s forwards;
+}
+
+
+/* ARCHITECTURAL LABEL */
+
+.construction-label{
+    position:absolute;
+
+    left:50%;
+    bottom:12%;
+
+    transform:translateX(-50%);
+
+    color:#d4af37;
+
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:4px;
+
+    z-index:3;
+
+    opacity:0;
+
+    animation:
+        labelReveal 1s ease 3.4s forwards,
+        labelGlow 2s ease-in-out 4.5s infinite;
+}
+
+.label-line{
+    display:inline-block;
+
+    width:50px;
+    height:1px;
+
+    background:#d4af37;
+
+    margin-right:12px;
+
+    vertical-align:middle;
+}
+
+
+/* =========================================
+   KEYFRAMES
+========================================= */
+
+@keyframes gridReveal{
+
+    from{
+        opacity:0;
+        transform:scale(1.15);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+
+@keyframes cadVertical{
+
+    from{
+        opacity:0;
+        transform:scaleY(0);
+        transform-origin:top;
+    }
+
+    to{
+        opacity:0.7;
+        transform:scaleY(1);
+    }
+}
+
+
+@keyframes cadHorizontal{
+
+    from{
+        opacity:0;
+        transform:scaleX(0);
+        transform-origin:left;
+    }
+
+    to{
+        opacity:0.7;
+        transform:scaleX(1);
+    }
+}
+
+
+@keyframes roofReveal{
+
+    from{
+        opacity:0;
+        transform:scaleX(0);
+    }
+
+    to{
+        opacity:0.8;
+        transform:scaleX(1);
+    }
+}
+
+
+@keyframes buildingAppear{
+
+    from{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(0.85);
+    }
+
+    to{
+        opacity:1;
+        transform:translate(-50%,-50%) scale(1);
+    }
+}
+
+
+@keyframes drawWidth{
+
+    from{
+        transform:scaleX(0);
+    }
+
+    to{
+        transform:scaleX(1);
+    }
+}
+
+
+@keyframes drawHeight{
+
+    from{
+        transform:scaleY(0);
+    }
+
+    to{
+        transform:scaleY(1);
+    }
+}
+
+
+@keyframes windowReveal{
+
+    from{
+        opacity:0;
+        transform:scale(0.5);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+
+@keyframes doorReveal{
+
+    from{
+        transform:translateX(-50%) scaleY(0);
+    }
+
+    to{
+        transform:translateX(-50%) scaleY(1);
+    }
+}
+
+
+@keyframes labelReveal{
+
+    from{
+        opacity:0;
+        transform:translate(-50%,20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translate(-50%,0);
+    }
+}
+
+
+@keyframes labelGlow{
+
+    0%,100%{
+        text-shadow:0 0 5px rgba(212,175,55,0.3);
+    }
+
+    50%{
+        text-shadow:0 0 20px rgba(212,175,55,0.8);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
 
 @media(max-width:768px){
 
-    .game-section{
-        padding:70px 15px;
+    .building-draw{
+        width:320px;
+        height:250px;
     }
 
-    .game-section h2{
-        font-size:32px;
+    .draw-foundation{
+        width:270px;
+        left:25px;
     }
 
-    .game-subtitle{
-        font-size:16px;
+    .wall-left{
+        left:40px;
     }
 
-    .game-container{
-        padding:20px 15px;
+    .wall-right{
+        right:40px;
     }
 
-    .game-house{
-        height:240px;
-        font-size:90px;
+    .draw-roof{
+        left:40px;
+        width:240px;
     }
 
-    .game-controls{
-        flex-direction:column;
+    .window-1{
+        left:80px;
+        width:45px;
+        height:60px;
     }
 
-    .game-controls button{
-        width:100%;
+    .window-2{
+        right:80px;
+        width:45px;
+        height:60px;
+    }
+
+    .draw-door{
+        width:50px;
+        height:80px;
+    }
+
+    .construction-label{
+        font-size:9px;
+        letter-spacing:2px;
+        white-space:nowrap;
+    }
+
+    .label-line{
+        width:25px;
+    }
+
+}
+/* HERO TEXT AFTER BLUEPRINT */
+
+.blueprint-hero .hero-content{
+    opacity:0;
+    animation:heroFinalReveal 1s ease 3.8s forwards;
+}
+
+@keyframes heroFinalReveal{
+
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+/* Gender Selection */
+
+.gender-selection {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.gender-selection h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.gender-options {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.gender-card {
+    width: 160px;
+    padding: 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    background: #ffffff;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    transition: 0.3s ease;
+}
+
+.gender-card:hover {
+    transform: translateY(-6px);
+}
+
+.gender-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.gender-card p {
+    margin: 10px 0 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+/* =====================================================
+   RC DESIGN HUB — PREMIUM CINEMATIC WELCOME SCREEN
+   HTML & JAVASCRIPT தேவையில்லை — CSS ONLY
+   ===================================================== */
+
+.welcome-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(212, 175, 55, 0.08),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #030303,
+            #0c0c0c 50%,
+            #020202
+        );
+
+    text-align: center;
+
+    transition:
+        opacity 0.9s ease,
+        visibility 0.9s ease;
+}
+
+
+/* =====================================================
+   HIDE
+   ===================================================== */
+
+.welcome-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   SUBTLE ARCHITECTURAL GRID
+   ===================================================== */
+
+.welcome-screen {
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.018) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle at center,
+            rgba(212,175,55,0.09),
+            transparent 42%
+        ),
+        linear-gradient(
+            135deg,
+            #030303,
+            #0c0c0c,
+            #020202
+        );
+
+    background-size:
+        50px 50px,
+        50px 50px,
+        100% 100%,
+        100% 100%;
+
+    animation: gridBreath 8s ease-in-out infinite;
+}
+
+@keyframes gridBreath {
+
+    0%, 100% {
+        background-position:
+            0 0,
+            0 0,
+            center,
+            center;
+    }
+
+    50% {
+        background-position:
+            15px 10px,
+            10px 15px,
+            center,
+            center;
+    }
+}
+
+
+/* =====================================================
+   MAIN MOVING LIGHT
+   ===================================================== */
+
+.animated-lines {
+    position: absolute;
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: 0.35;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            transparent 35%,
+            rgba(212,175,55,0.18) 48%,
+            rgba(255,255,255,0.08) 50%,
+            rgba(212,175,55,0.18) 52%,
+            transparent 65%,
+            transparent 100%
+        );
+
+    background-size: 250% 100%;
+
+    animation:
+        lightSweep 10s linear infinite;
+}
+
+@keyframes lightSweep {
+
+    0% {
+        transform: translateX(-20%);
+        background-position: 250% center;
+    }
+
+    100% {
+        transform: translateX(20%);
+        background-position: -250% center;
+    }
+}
+
+
+/* =====================================================
+   OCEAN / WATER WAVE — LAYER 1
+   ===================================================== */
+
+.animated-lines::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180%;
+    height: 260px;
+
+    left: -40%;
+    bottom: -40px;
+
+    border-radius: 50%;
+
+    border-top:
+        1px solid rgba(212,175,55,0.28);
+
+    box-shadow:
+        0 -15px 0 rgba(212,175,55,0.10),
+        0 -30px 0 rgba(212,175,55,0.07),
+        0 -45px 0 rgba(212,175,55,0.04);
+
+    transform:
+        rotate(-3deg)
+        scaleY(0.45);
+
+    animation:
+        oceanWaveOne 7s ease-in-out infinite;
+
+}
+
+
+@keyframes oceanWaveOne {
+
+    0%, 100% {
+        transform:
+            translateX(-5%)
+            rotate(-3deg)
+            scaleY(0.45);
+    }
+
+    50% {
+        transform:
+            translateX(5%)
+            rotate(3deg)
+            scaleY(0.65);
+    }
+}
+
+
+/* =====================================================
+   OCEAN / WATER WAVE — LAYER 2
+   ===================================================== */
+
+.animated-lines::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 170%;
+    height: 220px;
+
+    left: -35%;
+    bottom: 30px;
+
+    border-radius: 50%;
+
+    border-top:
+        1px solid rgba(255,255,255,0.13);
+
+    box-shadow:
+        0 -20px 0 rgba(212,175,55,0.07),
+        0 -40px 0 rgba(212,175,55,0.04);
+
+    transform:
+        rotate(4deg)
+        scaleY(0.45);
+
+    animation:
+        oceanWaveTwo 9s ease-in-out infinite;
+
+}
+
+
+@keyframes oceanWaveTwo {
+
+    0%, 100% {
+        transform:
+            translateX(5%)
+            rotate(4deg)
+            scaleY(0.45);
+    }
+
+    50% {
+        transform:
+            translateX(-5%)
+            rotate(-4deg)
+            scaleY(0.7);
+    }
+}
+
+
+/* =====================================================
+   LARGE ROTATING CIRCLE
+   ===================================================== */
+
+.welcome-screen::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 650px;
+    height: 650px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(212,175,55,0.11);
+
+    box-shadow:
+        0 0 50px rgba(212,175,55,0.025);
+
+    animation:
+        largeOrbit 30s linear infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes largeOrbit {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =====================================================
+   SECOND CIRCLE
+   ===================================================== */
+
+.welcome-screen::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed rgba(212,175,55,0.18);
+
+    animation:
+        smallOrbit 18s linear infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes smallOrbit {
+
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+/* =====================================================
+   EXTRA CENTER GLOW
+   ===================================================== */
+
+.animated-glow {
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,175,55,0.11),
+            rgba(212,175,55,0.035) 38%,
+            transparent 72%
+        );
+
+    filter: blur(6px);
+
+    animation:
+        centerPulse 6s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes centerPulse {
+
+    0%, 100% {
+        transform: scale(0.82);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scale(1.12);
+        opacity: 1;
+    }
+}
+
+
+/* =====================================================
+   DIAGONAL LIGHT LINES
+   ===================================================== */
+
+.welcome-content {
+
+    position: relative;
+
+    z-index: 20;
+
+    padding: 30px;
+
+    animation:
+        contentAppear 1.5s
+        cubic-bezier(.2,.8,.2,1)
+        forwards;
+}
+
+
+.welcome-content::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100vw;
+    height: 1px;
+
+    top: 25%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-7deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(212,175,55,0.22),
+            transparent
+        );
+
+    pointer-events: none;
+
+    animation:
+        diagonalLineOne 8s ease-in-out infinite;
+}
+
+
+.welcome-content::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100vw;
+    height: 1px;
+
+    top: 75%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(7deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.12),
+            transparent
+        );
+
+    pointer-events: none;
+
+    animation:
+        diagonalLineTwo 10s ease-in-out infinite;
+}
+
+
+@keyframes diagonalLineOne {
+
+    0%, 100% {
+        opacity: 0.15;
+        transform:
+            translateX(-55%)
+            rotate(-7deg);
+    }
+
+    50% {
+        opacity: 0.65;
+        transform:
+            translateX(-45%)
+            rotate(-7deg);
+    }
+}
+
+
+@keyframes diagonalLineTwo {
+
+    0%, 100% {
+        opacity: 0.1;
+        transform:
+            translateX(-45%)
+            rotate(7deg);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform:
+            translateX(-55%)
+            rotate(7deg);
+    }
+}
+
+
+/* =====================================================
+   LOGO
+   ===================================================== */
+
+.welcome-logo {
+
+    position: relative;
+
+    display: inline-block;
+
+    animation:
+        logoEnter 1.5s ease forwards;
+}
+
+
+.welcome-logo::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -18px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid rgba(212,175,55,0.35);
+
+    animation:
+        logoRingOne 6s linear infinite;
+}
+
+
+.welcome-logo::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -32px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed rgba(212,175,55,0.15);
+
+    animation:
+        logoRingTwo 10s linear infinite;
+}
+
+
+.welcome-logo img {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: 100px;
+    height: 100px;
+
+    object-fit: contain;
+
+    margin-bottom: 20px;
+
+    animation:
+        logoFloat 4s ease-in-out infinite;
+}
+
+
+@keyframes logoEnter {
+
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+@keyframes logoFloat {
+
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+@keyframes logoRingOne {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes logoRingTwo {
+
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+
+/* =====================================================
+   TITLE
+   ===================================================== */
+
+.welcome-content h1 {
+
+    position: relative;
+
+    z-index: 30;
+
+    color: #ffffff;
+
+    font-size: 38px;
+
+    margin: 10px 0;
+
+    letter-spacing: 1px;
+
+    animation:
+        titleAnimation 1.6s
+        ease 0.3s
+        both;
+}
+
+
+@keyframes titleAnimation {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(25px);
+        letter-spacing: 9px;
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0);
+        letter-spacing: 1px;
+    }
+}
+
+
+/* =====================================================
+   SUBTITLE
+   ===================================================== */
+
+.welcome-content p {
+
+    position: relative;
+
+    z-index: 30;
+
+    color: #d4af37;
+
+    font-size: 16px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 35px;
+
+    animation:
+        subtitleAnimation 1.5s
+        ease 0.7s
+        both;
+}
+
+
+@keyframes subtitleAnimation {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   ENTER BUTTON
+   ===================================================== */
+
+#enterWebsite {
+
+    position: relative;
+
+    z-index: 40;
+
+    padding: 14px 35px;
+
+    border:
+        1px solid #d4af37;
+
+    border-radius: 30px;
+
+    background:
+        rgba(0,0,0,0.25);
+
+    color: #d4af37;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        all 0.4s ease;
+
+    animation:
+        buttonEnter 1.5s
+        ease 1s
+        both,
+        buttonGlow 3s ease-in-out 2s infinite;
+}
+
+
+@keyframes buttonEnter {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes buttonGlow {
+
+    0%, 100% {
+        box-shadow:
+            0 0 0 rgba(212,175,55,0);
+    }
+
+    50% {
+        box-shadow:
+            0 0 22px rgba(212,175,55,0.25);
+    }
+}
+
+
+/* =====================================================
+   BUTTON SHINE
+   ===================================================== */
+
+#enterWebsite::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: -120%;
+
+    width: 70%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.2),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    animation:
+        buttonShine 4s ease-in-out infinite;
+}
+
+
+@keyframes buttonShine {
+
+    0% {
+        left: -120%;
+    }
+
+    45%,
+    100% {
+        left: 150%;
+    }
+}
+
+
+#enterWebsite:hover {
+
+    background: #d4af37;
+
+    color: #111;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 25px rgba(212,175,55,0.4),
+        0 0 60px rgba(212,175,55,0.12);
+}
+
+
+/* =====================================================
+   FLOATING PARTICLES
+   ===================================================== */
+
+.welcome-content {
+
+    --particle-color:
+        rgba(212,175,55,0.55);
+}
+
+
+.welcome-content::marker {
+    display: none;
+}
+
+
+/* Small floating dots using box shadows */
+
+.animated-glow::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 4px;
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: rgba(212,175,55,0.6);
+
+    box-shadow:
+        120px -180px 0 rgba(212,175,55,0.25),
+        -170px -90px 0 rgba(255,255,255,0.18),
+        190px 100px 0 rgba(212,175,55,0.3),
+        -130px 160px 0 rgba(212,175,55,0.22),
+        220px -30px 0 rgba(255,255,255,0.15),
+        -220px 40px 0 rgba(212,175,55,0.18);
+
+    animation:
+        particlesFloat 8s ease-in-out infinite;
+}
+
+
+@keyframes particlesFloat {
+
+    0%, 100% {
+        transform:
+            translate(0,0)
+            scale(1);
+
+        opacity: 0.35;
+    }
+
+    50% {
+        transform:
+            translate(15px,-25px)
+            scale(1.5);
+
+        opacity: 0.9;
+    }
+}
+
+
+/* =====================================================
+   CONTENT ENTRANCE
+   ===================================================== */
+
+@keyframes contentAppear {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(35px)
+            scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 600px) {
+
+    .welcome-content {
+        padding: 20px;
+    }
+
+    .welcome-content h1 {
+        font-size: 26px;
+    }
+
+    .welcome-content p {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .welcome-logo img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .welcome-screen::before {
+        width: 380px;
+        height: 380px;
+    }
+
+    .welcome-screen::after {
+        width: 250px;
+        height: 250px;
+    }
+
+    .animated-glow {
+        width: 300px;
+        height: 300px;
+    }
+
+}
+/* =========================================================
+   RC DESIGN HUB
+   PREMIUM WELCOME SCREEN
+   ========================================================= */
+
+.welcome-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(212, 175, 55, 0.08),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #030303,
+            #101010,
+            #030303
+        );
+
+    text-align: center;
+
+    transition:
+        opacity 0.9s ease,
+        visibility 0.9s ease;
+}
+
+
+/* =========================================================
+   HIDE
+   ========================================================= */
+
+.welcome-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ANIMATED GRID
+   ========================================================= */
+
+.welcome-screen {
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.02) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.02) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            circle at center,
+            rgba(212,175,55,0.08),
+            transparent 40%
+        ),
+        linear-gradient(
+            135deg,
+            #030303,
+            #101010,
+            #030303
+        );
+
+    background-size:
+        50px 50px,
+        50px 50px,
+        100% 100%,
+        100% 100%;
+
+    animation: gridMove 12s linear infinite;
+}
+
+
+@keyframes gridMove {
+
+    from {
+        background-position:
+            0 0,
+            0 0,
+            center,
+            center;
+    }
+
+    to {
+        background-position:
+            50px 50px,
+            50px 50px,
+            center,
+            center;
+    }
+}
+
+
+/* =========================================================
+   MOVING LIGHT LINES
+   ========================================================= */
+
+.animated-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.3;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(212, 175, 55, 0.3),
+            transparent
+        );
+
+    background-size: 250% 100%;
+
+    animation: lightMove 8s linear infinite;
+}
+
+@keyframes lightMove {
+    from {
+        background-position: 250% 0;
+    }
+
+    to {
+        background-position: -250% 0;
+    }
+}
+/* =========================================
+   INK CANVAS
+   ========================================= */
+
+#inkCanvas {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    opacity: 0.8;
+
+    mix-blend-mode: screen;
+}
+
+
+/* Keep welcome content above ink */
+
+.welcome-content {
+    position: relative;
+    z-index: 10;
+}
+/* =========================================
+   LOGO — BLEND WITH WELCOME BACKGROUND
+   ========================================= */
+
+.welcome-logo img {
+    width: 100px;
+    height: 100px;
+
+    object-fit: contain;
+
+    margin-bottom: 20px;
+
+    mix-blend-mode: screen;
+
+    filter:
+        drop-shadow(0 0 8px rgba(212, 175, 55, 0.25));
+
+    animation: logoFloat 4s ease-in-out infinite;
+}
+/* =========================================
+   WELCOME CONTACT INPUT
+   ========================================= */
+
+.visitor-contact {
+    margin: 0 auto 20px;
+    width: min(320px, 90vw);
+}
+
+#visitorContact {
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 13px 18px;
+
+    border: 1px solid rgba(212, 175, 55, 0.45);
+    border-radius: 25px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    text-align: center;
+
+    transition: 0.3s ease;
+}
+
+#visitorContact::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+#visitorContact:focus {
+    border-color: #d4af37;
+
+    box-shadow:
+        0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+#contactError {
+    display: block;
+
+    margin-top: 7px;
+
+    min-height: 16px;
+
+    color: #ff7777;
+
+    font-size: 11px;
+}
+
+
+/* Disabled ENTER button */
+
+#enterWebsite:disabled {
+    opacity: 0.35;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+
+    transform: none;
+}
+
+#enterWebsite:enabled {
+    opacity: 1;
+
+    cursor: pointer;
+}
+.projects {
+    opacity: 1;
+    visibility: visible;
+}
+
+.projects h2,
+.projects .project-filters,
+.projects .project-gallery,
+.projects .project-card {
+    opacity: 1;
+    visibility: visible;
+}
+/* ===== WELCOME TEXT ANIMATION ===== */
+
+.welcome-content h1 {
+    animation: welcomeSlideUp 1s ease-out forwards;
+}
+
+.welcome-content p {
+    animation: welcomeSlideUp 1.2s ease-out forwards;
+}
+
+@keyframes welcomeSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ===== HERO TITLE ANIMATION ===== */
+
+.hero-content h1 {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: heroTitleReveal 1s ease-out 0.3s forwards;
+}
+
+@keyframes heroTitleReveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ===== HOME HERO ANIMATION ===== */
+
+.hero-content {
+    opacity: 0;
+    transform: translateY(25px);
+}
+
+.hero-content.animate {
+    animation: heroContentReveal 1s ease-out forwards;
+}
+
+@keyframes heroContentReveal {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
