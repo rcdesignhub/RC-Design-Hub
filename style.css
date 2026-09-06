@@ -5058,3 +5058,49 @@ footer{
         background-position: 180px 180px, 180px 180px;
     }
 }
+/* ===== FINAL PROJECT CARD ALIGNMENT FIX ===== */
+
+.project-gallery {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: stretch !important;
+    gap: 30px !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+}
+
+.project-card {
+    width: 350px !important;
+    max-width: 350px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.project-card img {
+    width: 100% !important;
+    height: 250px !important;
+    object-fit: cover !important;
+}
+
+.project-card h3,
+.project-card p,
+.project-card a {
+    width: 100%;
+    text-align: center;
+}
+/* ===== PROJECT ALIGNMENT FIX ===== */
+
+.project-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.project-card {
+    width: 350px;
+    flex: 0 0 350px;
+}
