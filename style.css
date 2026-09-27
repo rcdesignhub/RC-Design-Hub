@@ -5104,3 +5104,948 @@ footer{
     width: 350px;
     flex: 0 0 350px;
 }
+/* =========================================
+   RC DESIGN HUB - PREMIUM LOGIN SCREEN
+========================================= */
+
+.welcome-screen {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    background: #0b0b0b;
+}
+
+/* Background */
+
+.login-bg {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.78)
+        ),
+        url("images/hero.jpg") center/cover no-repeat;
+
+    transform: scale(1.05);
+    animation: slowZoom 12s ease-in-out infinite alternate;
+}
+
+@keyframes slowZoom {
+
+    from {
+        transform: scale(1.05);
+    }
+
+    to {
+        transform: scale(1.15);
+    }
+}
+
+/* Dark overlay */
+
+.login-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,0.08),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(0,0,0,0.15),
+            rgba(0,0,0,0.65)
+        );
+}
+
+/* Login Card */
+
+.login-card {
+    position: relative;
+    z-index: 2;
+
+    width: min(430px, 88%);
+
+    padding: 42px 38px 30px;
+
+    text-align: center;
+
+    border-radius: 24px;
+
+    background: rgba(15,15,15,0.72);
+
+    border: 1px solid rgba(255,255,255,0.18);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.65),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+
+    animation: loginAppear 1s ease;
+}
+
+@keyframes loginAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Logo */
+
+.login-logo {
+    width: 95px;
+    height: 95px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.95);
+
+    box-shadow:
+        0 0 0 5px rgba(255,255,255,0.08),
+        0 0 35px rgba(255,255,255,0.18);
+}
+
+.login-logo img {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+}
+
+/* Line */
+
+.login-line {
+    width: 70px;
+    height: 2px;
+
+    margin: 0 auto 18px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ffffff,
+        transparent
+    );
+}
+
+/* Heading */
+
+.login-card h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 32px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.login-tagline {
+    margin: 8px 0 25px;
+
+    color: #d8d8d8;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.login-welcome {
+    margin-bottom: 18px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 500;
+}
+
+/* Input */
+
+.login-input-box {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 54px;
+
+    padding: 0 16px;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.09);
+
+    border: 1px solid rgba(255,255,255,0.22);
+
+    transition: 0.3s;
+}
+
+.login-input-box:focus-within {
+    border-color: rgba(255,255,255,0.65);
+
+    background: rgba(255,255,255,0.13);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.08);
+}
+
+.login-input-box i {
+    margin-right: 12px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+}
+
+.login-input-box input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 15px;
+}
+
+.login-input-box input::placeholder {
+    color: rgba(255,255,255,0.58);
+}
+
+/* Note */
+
+.login-note {
+    margin: 10px 0 22px;
+
+    color: rgba(255,255,255,0.55);
+
+    font-size: 12px;
+}
+
+/* Enter Button */
+
+#enterWebsite {
+    width: 100%;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    color: #111111;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    transition: 0.35s;
+}
+
+#enterWebsite:not(:disabled):hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.35);
+}
+
+#enterWebsite:not(:disabled):hover i {
+    transform: translateX(5px);
+}
+
+#enterWebsite i {
+    transition: 0.3s;
+}
+
+#enterWebsite:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Footer */
+
+.login-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 25px;
+
+    color: rgba(255,255,255,0.48);
+
+    font-size: 10px;
+
+    letter-spacing: 0.5px;
+}
+
+.login-footer b {
+    color: rgba(255,255,255,0.25);
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .login-card {
+        width: 88%;
+        padding: 35px 24px 25px;
+        border-radius: 20px;
+    }
+
+    .login-logo {
+        width: 82px;
+        height: 82px;
+    }
+
+    .login-logo img {
+        width: 65px;
+        height: 65px;
+    }
+
+    .login-card h1 {
+        font-size: 27px;
+    }
+
+    .login-tagline {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .login-welcome {
+        font-size: 15px;
+    }
+}
+/* =========================================
+   RC DESIGN HUB - PREMIUM LOGIN SCREEN
+========================================= */
+
+.welcome-screen {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    background: #0b0b0b;
+}
+
+/* Background */
+
+.login-bg {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.78)
+        ),
+        url("images/hero.jpg") center/cover no-repeat;
+
+    transform: scale(1.05);
+    animation: slowZoom 12s ease-in-out infinite alternate;
+}
+
+@keyframes slowZoom {
+
+    from {
+        transform: scale(1.05);
+    }
+
+    to {
+        transform: scale(1.15);
+    }
+}
+
+/* Dark overlay */
+
+.login-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,0.08),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            rgba(0,0,0,0.15),
+            rgba(0,0,0,0.65)
+        );
+}
+
+/* Login Card */
+
+.login-card {
+    position: relative;
+    z-index: 2;
+
+    width: min(430px, 88%);
+
+    padding: 42px 38px 30px;
+
+    text-align: center;
+
+    border-radius: 24px;
+
+    background: rgba(15,15,15,0.72);
+
+    border: 1px solid rgba(255,255,255,0.18);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.65),
+        inset 0 1px 0 rgba(255,255,255,0.12);
+
+    animation: loginAppear 1s ease;
+}
+
+@keyframes loginAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(35px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Logo */
+
+.login-logo {
+    width: 95px;
+    height: 95px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255,255,255,0.95);
+
+    box-shadow:
+        0 0 0 5px rgba(255,255,255,0.08),
+        0 0 35px rgba(255,255,255,0.18);
+}
+
+.login-logo img {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+}
+
+/* Line */
+
+.login-line {
+    width: 70px;
+    height: 2px;
+
+    margin: 0 auto 18px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ffffff,
+        transparent
+    );
+}
+
+/* Heading */
+
+.login-card h1 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 32px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.login-tagline {
+    margin: 8px 0 25px;
+
+    color: #d8d8d8;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.login-welcome {
+    margin-bottom: 18px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 500;
+}
+
+/* Input */
+
+.login-input-box {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 54px;
+
+    padding: 0 16px;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.09);
+
+    border: 1px solid rgba(255,255,255,0.22);
+
+    transition: 0.3s;
+}
+
+.login-input-box:focus-within {
+    border-color: rgba(255,255,255,0.65);
+
+    background: rgba(255,255,255,0.13);
+
+    box-shadow:
+        0 0 20px rgba(255,255,255,0.08);
+}
+
+.login-input-box i {
+    margin-right: 12px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+}
+
+.login-input-box input {
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 15px;
+}
+
+.login-input-box input::placeholder {
+    color: rgba(255,255,255,0.58);
+}
+
+/* Note */
+
+.login-note {
+    margin: 10px 0 22px;
+
+    color: rgba(255,255,255,0.55);
+
+    font-size: 12px;
+}
+
+/* Enter Button */
+
+#enterWebsite {
+    width: 100%;
+    height: 54px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    color: #111111;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    transition: 0.35s;
+}
+
+#enterWebsite:not(:disabled):hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.35);
+}
+
+#enterWebsite:not(:disabled):hover i {
+    transform: translateX(5px);
+}
+
+#enterWebsite i {
+    transition: 0.3s;
+}
+
+#enterWebsite:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* Footer */
+
+.login-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 25px;
+
+    color: rgba(255,255,255,0.48);
+
+    font-size: 10px;
+
+    letter-spacing: 0.5px;
+}
+
+.login-footer b {
+    color: rgba(255,255,255,0.25);
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .login-card {
+        width: 88%;
+        padding: 35px 24px 25px;
+        border-radius: 20px;
+    }
+
+    .login-logo {
+        width: 82px;
+        height: 82px;
+    }
+
+    .login-logo img {
+        width: 65px;
+        height: 65px;
+    }
+
+    .login-card h1 {
+        font-size: 27px;
+    }
+
+    .login-tagline {
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .login-welcome {
+        font-size: 15px;
+    }
+}/* LOGO - HIDE WHITE SQUARE CORNERS */
+
+.login-logo {
+    width: 125px;
+    height: 125px;
+
+    border-radius: 50%;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+}
+
+.login-logo img {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    transform: scale(1.05);
+}
+/* =========================================
+   RC DESIGN HUB
+   CLEAN PROFESSIONAL LOGIN
+========================================= */
+
+.login-card {
+    width: min(410px, 88%);
+    padding: 38px 36px 28px;
+
+    background: rgba(20, 20, 20, 0.82);
+
+    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    border-radius: 18px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    animation: loginAppear 0.7s ease;
+}
+
+/* Logo */
+
+.login-logo {
+    width: 105px;
+    height: 105px;
+
+    margin-bottom: 20px;
+
+    background: #ffffff;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.login-logo img {
+    width: 82px;
+    height: 82px;
+
+    object-fit: contain;
+
+    transform: scale(1.05);
+}
+
+/* Heading */
+
+.login-card h1 {
+    font-size: 30px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 8px;
+}
+
+.login-tagline {
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    margin-bottom: 26px;
+}
+
+.login-welcome {
+    font-size: 16px;
+
+    font-weight: 400;
+
+    color: #ffffff;
+
+    margin-bottom: 18px;
+}
+
+/* Input */
+
+.login-input-box {
+    height: 52px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+
+    border-radius: 9px;
+}
+
+.login-input-box:focus-within {
+    border-color: rgba(255, 255, 255, 0.55);
+
+    background: rgba(255, 255, 255, 0.08);
+
+    box-shadow: none;
+}
+
+.login-input-box input {
+    font-size: 14px;
+}
+
+/* Small description */
+
+.login-note {
+    font-size: 11px;
+
+    color: rgba(255, 255, 255, 0.45);
+
+    margin: 9px 0 20px;
+}
+
+/* Button */
+
+#enterWebsite {
+    height: 52px;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #151515;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    letter-spacing: 1.4px;
+
+    transition: all 0.25s ease;
+}
+
+#enterWebsite:not(:disabled):hover {
+    background: #eeeeee;
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+#enterWebsite i {
+    animation: none;
+}
+
+/* Bottom services */
+
+.login-footer {
+    margin-top: 22px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.4px;
+
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.login-footer b {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* Clean entrance */
+
+@keyframes loginAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .login-card {
+        width: 88%;
+        padding: 32px 24px 25px;
+    }
+
+    .login-logo {
+        width: 95px;
+        height: 95px;
+    }
+
+    .login-logo img {
+        width: 75px;
+        height: 75px;
+    }
+
+    .login-card h1 {
+        font-size: 27px;
+    }
+
+}
+/* Clean Input Box Only */
+
+.login-input-box {
+    border: 1px solid rgba(255,255,255,0.22) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.login-input-box input {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.login-input-box:focus-within {
+    border: 1px solid rgba(255,255,255,0.5) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
