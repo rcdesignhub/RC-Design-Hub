@@ -404,32 +404,33 @@ interior atmosphere.
     <a href="images/project27.jpg" target="_blank">
         View Project
     </a>
-
 </div>
-
 <!-- Project 28 -->
 <div class="project-card elevation">
     <h3>Contemporary Night Residence</h3>
     <img src="images/project28.jpg" alt="Contemporary Night Residence">
     <p>Contemporary residence with elegant façade lighting, warm wooden details and a premium night-time ambience.</p>
-    <a href="#" onclick="openImage('images/project28.jpg'); return false;">View Project</a>
+    <a href="images/project28.jpg" target="_blank">
+        View Project
+    </a>
 </div>
 <!-- Project 29 -->
 <div class="project-card elevation">
     <h3>Modern Curved Tropical Residence</h3>
     <img src="images/project29.jpg" alt="Modern Curved Tropical Residence">
     <p>Unique modern residence featuring smooth curved elements, bold geometry and a refreshing tropical landscape.</p>
-    <a href="#" onclick="openImage('images/project29.jpg'); return false;">View Project</a>
+    <a href="images/project29.jpg" target="_blank">
+        View Project
+    </a>
 </div>
 <!-- Project 30 -->
 <div class="project-card elevation">
     <h3>Modern Tropical Residence Night View</h3>
     <img src="images/project30.jpg" alt="Modern Tropical Residence Night View">
     <p>Contemporary tropical residence featuring clean modern lines, warm architectural lighting and a lush nighttime landscape.</p>
-    <a href="javascript:void(0)"
-   onclick="document.getElementById('imageModal').style.display='flex'; document.getElementById('modalImage').src='images/project30.jpg';">
-    View Project
-</a>
+    <a href="images/project30.jpg" target="_blank">
+        View Project
+    </a>
 </div>
 <!-- Project 31 -->
 <div class="project-card elevation">
@@ -444,12 +445,29 @@ interior atmosphere.
         elegant façade details and a natural green landscape.
     </p>
 
-    <a href="javascript:void(0)"
-       onclick="document.getElementById('imageModal').style.display='flex'; document.getElementById('modalImage').src='images/project31.jpg';">
+    <a href="images/project31.jpg" target="_blank">
         View Project
     </a>
-
 </div>
+<!-- Project 32 -->
+<div class="project-card elevation">
+    <h3>Peacock-Inspired Modern Front Elevation</h3>
+
+    <img
+        src="images/project32.jpg"
+        alt="Peacock-Inspired Modern Front Elevation"
+    >
+
+    <p>
+        Elegant modern front elevation featuring a distinctive
+        peacock-inspired decorative parapet, stone cladding,
+        wooden textures and contemporary façade elements.
+    </p>
+<a href="images/project32.jpg" target="_blank">
+        View Project
+    </a>
+</div>
+    
 
 </div>
 </section>
@@ -604,35 +622,61 @@ interior atmosphere.
 <a href="tel:+918667632394" class="call">
     📞
 </a>
- <!-- Welcome Screen -->
+ <!-- Premium Welcome / Login Screen -->
 <div id="welcomeScreen" class="welcome-screen">
-    <div class="animated-lines"></div>
-<div class="animated-glow"></div>
 
-    <div class="welcome-content">
+    <div class="login-bg"></div>
+    <div class="login-overlay"></div>
 
-        <div class="welcome-logo">
-            <img src="images/logo.png" alt="RC Design Hub Logo">
+    <div class="login-card">
+
+        <div class="login-logo">
+            <img src="images/logo.png" alt="RC Design Hub">
         </div>
 
-        <h1>Welcome to RC Design Hub</h1>
+        <div class="login-line"></div>
 
-        <p>Innovate. Design. Inspire.</p>
+        <h1>RC Design Hub</h1>
 
-<input
-    type="text"
-    id="visitorContact"
-    placeholder="Enter Email or Mobile Number"
-    autocomplete="email"
->
+        <p class="login-tagline">
+            Innovate. Design. Inspire.
+        </p>
 
-<audio id="welcomeAudio" preload="auto">
-    <source src="welcome.mp3" type="audio/mpeg">
-</audio>
+        <p class="login-welcome">
+            Welcome to our Design Studio
+        </p>
 
-<button id="enterWebsite" type="button" disabled>
-    ENTER WEBSITE
-</button>
+        <div class="login-input-box">
+            <i class="fa-solid fa-user"></i>
+
+            <input
+                type="text"
+                id="visitorContact"
+                placeholder="Enter Email or Mobile Number"
+                autocomplete="email"
+            >
+        </div>
+
+        <p class="login-note">
+            Enter your contact to explore our designs
+        </p>
+
+        <audio id="welcomeAudio" preload="auto">
+            <source src="welcome.mp3" type="audio/mpeg">
+        </audio>
+
+        <button id="enterWebsite" type="button" disabled>
+            <span>ENTER WEBSITE</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <div class="login-footer">
+            <span>2D Plans</span>
+            <b>•</b>
+            <span>3D Elevations</span>
+            <b>•</b>
+            <span>Interior Design</span>
+        </div>
 
     </div>
 
@@ -645,6 +689,7 @@ interior atmosphere.
 </div>
 
 <script src="./script.js"></script>
+
 
 </body>
 </html>
